@@ -10,7 +10,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func keyPressed(_ sender: UIButton) {
+        // Reduce button pressed's opacity to half
+        sender.alpha = 0.5
+        
         playSound(soundName: sender.currentTitle!)
+        
+        // Wait before reverting opacity value
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            //Return opacity to normal
+            sender.alpha = 1.0
+        }
     }
     
     func playSound(soundName: String) {
